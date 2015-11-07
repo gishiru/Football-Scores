@@ -38,7 +38,7 @@ public class ScoreWidgetService extends IntentService {
     // Get today's score from database.
     String[] fragmentDate = new String[1];
     fragmentDate[0] = new SimpleDateFormat("yyyy-MM-dd")
-        .format(new Date(System.currentTimeMillis() + ((0 - 2) * 86400000)));
+        .format(new Date(System.currentTimeMillis() + ((2 - 2) * 86400000)));
     Cursor data = getContentResolver().query(
         DatabaseContract.scores_table.buildScoreWithDate(),
         null,
