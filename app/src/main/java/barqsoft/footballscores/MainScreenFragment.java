@@ -59,6 +59,7 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
                 mAdapter.notifyDataSetChanged();
             }
         });
+        score_list.setContentDescription(getActivity().getString(R.string.a11y_scores_list));
         return rootView;
     }
 
