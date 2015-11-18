@@ -84,4 +84,8 @@ public class Utilies
             default: return R.drawable.no_icon;
         }
     }
+
+    public static int inversePositionForRtl(int position, int total) {
+        return total - position - 1;
+    }
 }

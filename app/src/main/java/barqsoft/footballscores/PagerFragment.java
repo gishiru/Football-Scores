@@ -63,7 +63,10 @@ public class PagerFragment extends Fragment
         @Override
         public CharSequence getPageTitle(int position)
         {
-            return getDayName(getActivity(),System.currentTimeMillis()+((position-2)*86400000));
+          if (mPagerHandler.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            position = Utilies.inversePositionForRtl(position, getCount());
+          }
+          return getDayName(getActivity(),System.currentTimeMillis()+((position-2)*86400000));
         }
         public String getDayName(Context context, long dateInMillis) {
             // If the date is today, return the localized version of "Today" instead of the actual
