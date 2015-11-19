@@ -46,7 +46,10 @@ public class PagerFragment extends Fragment
         @Override
         public Fragment getItem(int i)
         {
-            return viewFragments[i];
+          if (mPagerHandler.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL) {
+            i = Utilies.inversePositionForRtl(i, getCount());
+          }
+          return viewFragments[i];
         }
 
         @Override
