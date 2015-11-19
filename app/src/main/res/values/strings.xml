@@ -32,6 +32,7 @@
 
         During the off season, fake data will be added to the app.
     </string>
+    <string name="no_data_text">No match</string>
 
     <!-- Strings related to widgets -->
     <string name="widget_text">This is a widget probably.</string>
