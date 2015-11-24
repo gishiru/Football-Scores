@@ -1,6 +1,7 @@
 package barqsoft.footballscores.service;
 
 import android.app.IntentService;
+import android.content.BroadcastReceiver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -281,5 +282,11 @@ public class myFetchService extends IntentService
     getApplicationContext().sendBroadcast(
         new Intent(ACTION_DATA_UPDATED).setPackage(getPackageName()));
   }
-}
 
+  public static class AlarmReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+      context.startService(new Intent(context, myFetchService.class));
+    }
+  }
+}

@@ -46,6 +46,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="barqsoft.footballscores.MainActivity" />
         </activity>
+        <receiver android:name=".service.myFetchService$AlarmReceiver" />
         <service android:name=".service.myFetchService" />
         <service android:name=".widget.ScoreWidgetService" />
     </application>

@@ -1,5 +1,8 @@
 package barqsoft.footballscores;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -20,6 +23,7 @@ import barqsoft.footballscores.service.myFetchService;
  */
 public class MainScreenFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor>
 {
+    private static final long ONE_DAY = 1000 * 60 * 60 * 24;
     public scoresAdapter mAdapter;
     public static final int SCORES_LOADER = 0;
     private String[] fragmentdate = new String[1];
@@ -33,6 +37,17 @@ public class MainScreenFragment extends Fragment implements LoaderManager.Loader
     {
         Intent service_start = new Intent(getActivity(), myFetchService.class);
         getActivity().startService(service_start);
+
+        Intent alarmIntent = new Intent(getActivity(), myFetchService.AlarmReceiver.class);
+        PendingIntent pendingIntent =
+            PendingIntent.getBroadcast(getActivity(), 0, alarmIntent, PendingIntent.FLAG_ONE_SHOT);
+        AlarmManager alarmManager =
+            (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setRepeating(
+            AlarmManager.RTC,
+            System.currentTimeMillis(),
+            ONE_DAY,
+            pendingIntent);
     }
     public void setFragmentDate(String date)
     {
