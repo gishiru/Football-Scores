@@ -44,7 +44,6 @@ public class ScoreWidgetService extends IntentService {
         null,
         null,
         fragmentDate,
-        null,
         null);
     if (data == null) {
       return;
